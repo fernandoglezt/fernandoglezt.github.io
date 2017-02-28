@@ -1,6 +1,6 @@
-var esferaForma = new THREE.SphereGeometry( 5 );
-var conoForma = new THREE.ConeGeometry( 3, 7);
-conoForma.translate(0, 5, 0);
+var esferaForma = new THREE.SphereGeometry( .25 );
+var conoForma = new THREE.ConeGeometry( .25, 1);
+conoForma.translate(0, 1, 0);
 
 var baseMalla = new THREE.Mesh(esferaForma);
 var conoMalla = new THREE.Mesh(conoForma);
