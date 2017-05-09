@@ -1,8 +1,8 @@
 function setup(){
   THREE.ImagenUtils.crossOrigin = '';
 	var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/box.jpg');
-	var material = new THREE.MeshBasicMaterial( {map: texxtura} );
-  var forma = nre THREE.BoxGeometry(1, 1, 1);
+	var material = new THREE.MeshBasicMaterial( {map: textura} );
+  var forma = new THREE.BoxGeometry(1, 1, 1);
   malla = new THREE.Mesh(forma, material);
   
   escena = new THREE.Scene();
