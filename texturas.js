@@ -1,6 +1,6 @@
 function setup(){
   THREE.ImagenUtils.crossOrigin = '';
-	var textura = THREE.ImageUtils.loadTexture('htt:p//threejs.org/examples/textures/create.gif');
+	var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/box.jpg');
 	var material = new THREE.MeshBasicMaterial( {map: texxtura} );
   var forma = nre THREE.BoxGeometry(1, 1, 1);
   malla = new THREE.Mesh(forma, material);
