@@ -28,11 +28,11 @@ function setup(){
   function loop(){
     requestAnimationFrame(loop);
     
-    malla.rotation.x += 0.01;
-    malla.rotation.y += 0.01;
+    malla.rotation.x += 0.05;
+    malla.rotation.y += 0.05;
 
-    malla2.rotation.x += 0.01;
-    malla2.rotation.y += 0.01;    
+    malla2.rotation.x += 0.05;
+    malla2.rotation.y += 0.05;    
     
     renderer.render(escena, camara);
   }
