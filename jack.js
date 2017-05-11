@@ -1,12 +1,12 @@
 function setup(){
   THREE.ImageUtils.crossOrigin = '';
-  var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/jack.jpg');
+  var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/jack.bmp');
   var material = new THREE.MeshBasicMaterial( {map: textura} );
   var forma = new THREE.BoxGeometry(1, 1, 1);
   malla = new THREE.Mesh(forma, material);
   malla.position.x = -3;
     
-  var textura2 = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/foca.jpg');
+  var textura2 = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/foca.bmp');
   var material2 = new THREE.MeshBasicMaterial( {map: textura2} );
   var forma2 = new THREE.BoxGeometry(1, 1, 1);
   malla2 = new THREE.Mesh(forma2, material2);
