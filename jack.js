@@ -30,6 +30,9 @@ function setup(){
     
     malla.rotation.x += 0.01;
     malla.rotation.y += 0.01;
+
+    malla2.rotation.x += 0.01;
+    malla2.rotation.y += 0.01;    
     
     renderer.render(escena, camara);
   }
