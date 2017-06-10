@@ -28,7 +28,7 @@ function setup(){
   
   
   //SkyBox (Fondo)
-	HREE.ImageUtils.crossOrigin = '';
+	THREE.ImageUtils.crossOrigin = '';
 	
         var imagePrefix = "'http://fernandoglezt.github.io/skyboxCielo-";
 	var directions  = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
