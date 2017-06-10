@@ -28,7 +28,9 @@ function setup(){
   
   
   //SkyBox (Fondo)
-  var imagePrefix = "skyboxCielo-";
+	HREE.ImageUtils.crossOrigin = '';
+	
+        var imagePrefix = "'http://fernandoglezt.github.io/skyboxCielo-";
 	var directions  = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
 	var imageSuffix = ".png";
 	var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );	
@@ -39,7 +41,8 @@ function setup(){
 			map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
 			side: THREE.BackSide
 		}));
-	var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+	
+	var skyMaterial = new THREE.MeshBasicMaterial( materialArray );
 	var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
 	escena.add( skyBox );
   
