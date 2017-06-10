@@ -28,23 +28,26 @@ function setup(){
   
   
   //SkyBox (Fondo)
-	THREE.ImageUtils.crossOrigin = '';
-	
-        var imagePrefix = "'http://fernandoglezt.github.io/skyboxCielo-";
-	var directions  = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
-	var imageSuffix = ".png";
-	var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );	
-	
-	var materialArray = [];
-	for (var i = 0; i < 6; i++)
-		materialArray.push( new THREE.MeshBasicMaterial({
-			map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
-			side: THREE.BackSide
-		}));
-	
-	var skyMaterial = new THREE.MeshBasicMaterial( materialArray );
-	var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
-	escena.add( skyBox );
+	var path = 'fernandoglezt.github.io/';
+        var sides = [ path + 'sbox_px.jpg', path + 'sbox_nx.jpg', path + 'sbox_py.jpg', path + 'sbox_ny.jpg', path + 'sbox_pz.jpg', path + 'sbox_nz.jpg' ];
+
+        // load images
+        var scCube = THREE.ImageUtils.loadTextureCube(sides);
+        scCube.format = THREE.RGBFormat;
+
+        // prepare skybox material (shader)
+        var skyShader = THREE.ShaderLib["cube"];
+        skyShader.uniforms["tCube"].value = scCube;
+        var skyMaterial = new THREE.ShaderMaterial( {
+          fragmentShader: skyShader.fragmentShader, vertexShader: skyShader.vertexShader,
+          uniforms: skyShader.uniforms, depthWrite: false, side: THREE.BackSide
+        });
+
+        // create Mesh with cube geometry and add to the scene
+        var skyBox = new THREE.Mesh(new THREE.CubeGeometry(500, 500, 500), skyMaterial);
+        skyMaterial.needsUpdate = true;
+
+        escena.add(skyBox);
   
 }
 
