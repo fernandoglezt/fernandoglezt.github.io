@@ -12,7 +12,7 @@ function setup(){
 	//Cámara
 	var VIEW_ANGLE = 45, ASPECT = window.innerWidth / window.innerHeight, NEAR = 0.1, FAR = 20000;
 	camara = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);	
-	escena.add(camera);
+	escena.add(camara);
 	camara.position.set(0,150,400);
 	camara.lookAt(escena.position);	
 
