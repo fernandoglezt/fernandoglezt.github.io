@@ -33,6 +33,8 @@ function actualiza(){
 	planetaTierra.position.x = 600*Math.cos(pos);
 	planetaTierra.position.y = 600*Math.sin(pos);
 	
+	planetaTierra.rotation.y += 0.01;
+	
 	pos += 0.01;
 	if( pos >= 2*Math.PI)
 		pos = 0;
