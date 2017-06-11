@@ -28,7 +28,7 @@ function setup(){
   
   
         //Fondo
-	var path = 'http://fernandoglezt.github.io/';
+	var path = '';
         var sides = [ path + 'sbox_px.jpg', path + 'sbox_nx.jpg', path + 'sbox_py.jpg', path + 'sbox_ny.jpg', path + 'sbox_pz.jpg', path + 'sbox_nz.jpg' ];
         var scCube = new THREE.CubeTextureLoader().load(sides);
 	
