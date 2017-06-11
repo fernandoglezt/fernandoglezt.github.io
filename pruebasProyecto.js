@@ -33,7 +33,7 @@ function setup(){
 	window.addEventListener( 'resize', listener, false);
   
   	//Controles
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls = new THREE.OrbitControls( camara, renderer.domElement );
 	
         //Fondo
 	var path = '';
