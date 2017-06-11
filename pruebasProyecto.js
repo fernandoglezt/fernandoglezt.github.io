@@ -1,3 +1,9 @@
+var malla, camara, renderer, escena;
+var pointLight;
+setup();
+loop();
+
+
 var listener = function() {
 	camara.aspect = window.innerWidth/window.innerHeight;
 	camara.updateProjectionMatrix();
@@ -65,7 +71,3 @@ function setup(){
     renderer.render(escena, camara);
   }
 
-var malla, camara, renderer, escena;
-var pointLight;
-setup();
-loop();
