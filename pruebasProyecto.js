@@ -42,14 +42,21 @@ function setup(){
 	escena.add( pointLight );
 	
 	//Malla
-	THREE.ImageUtils.crossOrigin = '';
-  	var textura = THREE.ImageUtils.loadTexture('jack.bmp');
-  	var material = new THREE.MeshBasicMaterial( {map: textura} );
-  	var forma = new THREE.BoxGeometry(50, 50, 50);
-  	malla = new THREE.Mesh(forma, material);
- 	malla.position.x = -1;
+
+	group = new THREE.Group();
+	escena.add( group );
+
+	var loader = new THREE.TextureLoader();
+	loader.load('jack.bmp', function ( texture ) {
+		var forma = new THREE.BoxGeometry(50, 50, 50);
+		var material = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
+		malla = new THREE.Mesh(forma, material);
+		group.add( malla);
+	});
+
 
 }
+
 
  function loop(){
     requestAnimationFrame(loop);
