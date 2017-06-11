@@ -48,25 +48,7 @@ function setup(){
   	var ambient = new THREE.AmbientLight( 0xffffff );
 	escena.add( ambient );
 	pointLight = new THREE.PointLight( 0xffffff, 2 );
-	escena.add( pointLight );
-	
-	//Malla
-
-/*	var loader = new THREE.TextureLoader();
-	loader.load('jack.bmp', function ( texture ) {
-		var forma = new THREE.BoxGeometry(50, 50, 50);
-		var material = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
-		malla = new THREE.Mesh(forma, material);
-		escena.add( malla);
-	});*/
-	
-	//Piso
-/*	var floorMaterial = new THREE.MeshBasicMaterial( {color:0x444444, side:THREE.DoubleSide} );
-	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
-	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-	floor.position.y = -0.5;
-	floor.rotation.x = Math.PI / 2;
-	escena.add(floor);*/
+	escena.add( pointLight );	
 
 	//Piso
 	var loader = new THREE.TextureLoader();
@@ -79,6 +61,31 @@ function setup(){
 		escena.add( floor);
 	});
 	
+	//Paredes	
+	var loader = new THREE.TextureLoader();
+	loader.load('brick-texture.jpg', function ( texture ) {
+		
+		var wallGeometry = new THREE.CubeGeometry( 1000, 30, 10, 1, 1 );
+		var wallMaterial = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
+	
+		var wall = new THREE.Mesh(wallGeometry, wallMaterial);
+		wall.position.set(0, 15, 500);
+		escena.add(wall);
+	
+		var wallDos = new THREE.Mesh(wallGeometry, wallMaterial);
+		wallDos.position.set(0, 15, -500);
+		escena.add(wallDos);
+	
+		var wallTres = new THREE.Mesh(wallGeometry, wallMaterial);
+		wallTres.position.set(-500, 15, 0);
+		wallTres.rotation.y = Math.PI / 2;
+		escena.add(wallTres);
+
+		var wallCuatro = new THREE.Mesh(wallGeometry, wallMaterial);
+		wallCuatro.position.set(500, 15, 0);
+		wallCuatro.rotation.y = Math.PI / 2;
+		escena.add(wallCuatro);
+	}
 
 }
 
