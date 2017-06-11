@@ -43,15 +43,13 @@ function setup(){
 	
 	//Malla
 
-	group = new THREE.Group();
-	escena.add( group );
 
 	var loader = new THREE.TextureLoader();
 	loader.load('jack.bmp', function ( texture ) {
 		var forma = new THREE.BoxGeometry(50, 50, 50);
 		var material = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
 		malla = new THREE.Mesh(forma, material);
-		group.add( malla);
+		escena.add( malla);
 	});
 
 
