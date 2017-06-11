@@ -37,7 +37,7 @@ function setup(){
 	controls = new THREE.OrbitControls( camara, renderer.domElement );
 	
         //Fondo
-	var path = '/MilkyWay/';
+	var path = 'MilkyWay/';
         var sides = [ path + 'dark-s_px.jpg', path + 'dark-s_nx.jpg', path + 'dark-s_py.jpg', path + 'dark-s_ny.jpg', path + 'dark-s_pz.jpg', path + 'dark-s_nz.jpg' ];
         var scCube = new THREE.CubeTextureLoader().load(sides);
 	
