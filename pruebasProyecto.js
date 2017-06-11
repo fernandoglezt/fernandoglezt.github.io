@@ -43,7 +43,7 @@ function setup(){
 	
 	//Malla
 	THREE.ImageUtils.crossOrigin = '';
-  	var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/jack.bmp');
+  	var textura = THREE.ImageUtils.loadTexture('jack.bmp');
   	var material = new THREE.MeshBasicMaterial( {map: textura} );
   	var forma = new THREE.BoxGeometry(50, 50, 50);
   	malla = new THREE.Mesh(forma, material);
