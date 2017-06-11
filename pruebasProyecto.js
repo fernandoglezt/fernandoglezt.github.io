@@ -40,8 +40,27 @@ function setup(){
 	escena.add( ambient );
 	pointLight = new THREE.PointLight( 0xffffff, 2 );
 	escena.add( pointLight );
+	
+	//Malla
+	THREE.ImageUtils.crossOrigin = '';
+  	var textura = THREE.ImageUtils.loadTexture('http://fernandoglezt.github.io/jack.bmp');
+  	var material = new THREE.MeshBasicMaterial( {map: textura} );
+  	var forma = new THREE.BoxGeometry(50, 50, 50);
+  	malla = new THREE.Mesh(forma, material);
+ 	malla.position.x = -1;
 
 }
 
+ function loop(){
+    requestAnimationFrame(loop);
+    
+    malla.rotation.x += 0.05;
+    malla.rotation.y += 0.05;
+
+    renderer.render(escena, camara);
+  }
+
 var malla, camara, renderer, escena;
+var pointLight;
 setup();
+loop();
