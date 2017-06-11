@@ -4,10 +4,16 @@ setup();
 loop();
 
 
+function windowResize() {
+	camara.aspect = window.innerWidth/window.innerHeight;
+	camara.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
 
 function setup(){
 	//Escena
-  escena = new THREE.Scene();
+  	escena = new THREE.Scene();
 	
 	
 	//Cámara
@@ -25,7 +31,7 @@ function setup(){
 
 
 	//Eventos
-	THREEx.WindowResize(renderer, camera);
+	window.addEventListener( 'resize', windowResize, false );
   
   	//Controles
 	controls = new THREE.OrbitControls( camara, renderer.domElement );
