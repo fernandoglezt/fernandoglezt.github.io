@@ -85,8 +85,7 @@ function setup(){
 		wallCuatro.position.set(500, 15, 0);
 		wallCuatro.rotation.y = Math.PI / 2;
 		escena.add(wallCuatro);
-	}
-
+	});
 }
 
 
