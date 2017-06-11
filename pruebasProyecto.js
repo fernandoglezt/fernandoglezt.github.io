@@ -1,5 +1,8 @@
-var malla, camara, renderer, escena;
-var pointLight;
+var malla, camara, renderer, escena, pointLight;
+var pos = 0;
+var planetaTierra;
+
+
 setup();
 loop();
 
@@ -10,6 +13,31 @@ function windowResize() {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+function push(e) {
+	//CAMBIOS DE CÁMARA
+	if (e.keyCode === 90 ) //z
+		camara.position.z += 10; 
+	if (e.keyCode===88)  //x
+		camara.position.z -= 10;
+	if (e.keyCode===67) //c
+		camara.position.y += 5;
+	if (e.keyCode===86) //v
+		camara.position.y -= 5;
+	if (e.keyCode===66) //b
+		camara.position.x += 5;
+	if (e.keyCode===78) //n
+		camara.position.x -= 5;
+}
+
+function actualiza(){
+	planetaTierra.position.x = 600*Math.cos(pos);
+	planetaTierra.position.y = 600*Math.sin(pos);
+	
+	pos += 0.01;
+	if( pos >= 2*Math.PI)
+		pos = 0;
+
+}
 
 function setup(){
 	//Escena
@@ -32,6 +60,7 @@ function setup(){
 
 	//Eventos
 	window.addEventListener( 'resize', windowResize, false );
+	window.addEventListener( 'keydown', push, false);
   
   	//Controles
 	controls = new THREE.OrbitControls( camara, renderer.domElement );
@@ -86,12 +115,26 @@ function setup(){
 		wallCuatro.rotation.y = Math.PI / 2;
 		escena.add(wallCuatro);
 	});
+	
+	// Planetas
+	
+	//tierra
+	var loader = new THREE.TextureLoader();
+		loader.load( 'MilkyWay/land_ocean_ice_cloud_2048.jpg', function ( texture ) {
+			var planeta1 = new THREE.SphereGeometry( 60, 20, 20 );
+			var materialPlaneta1 = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+			planetaTierra = new THREE.Mesh( planeta1, materialPlaneta1 );
+			planetaTierra.position.y = 400;
+			escena.add(planetaTierra);
+	} );
+	
 }
 
 
  function loop(){
-    requestAnimationFrame(loop);
-    renderer.render(escena, camara);
-    controls.update();
+	requestAnimationFrame(loop);
+        renderer.render(escena, camara);
+	actualiza();
+        controls.update();
   }
 
