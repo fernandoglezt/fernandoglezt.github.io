@@ -70,7 +70,7 @@ function setup(){
 
 	//Piso
 	var loader = new THREE.TextureLoader();
-	loader.load('grass-texture.jpg', function ( texture ) {
+	loader.load('floor-texture.jpg', function ( texture ) {
 		var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
 		var floorMaterial = new THREE.MeshBasicMaterial( { map: texture, side: THREE.DoubleSide } );
 		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
