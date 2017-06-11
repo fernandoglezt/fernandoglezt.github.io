@@ -33,7 +33,7 @@ function setup(){
         var scCube = new THREE.CubeTextureLoader().load(sides);
 	
         scCube.format = THREE.RGBFormat;
-	escena.background = ssCube;
+	escena.background = scCube;
         
   
 }
