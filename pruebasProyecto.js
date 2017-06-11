@@ -35,7 +35,12 @@ function setup(){
         scCube.format = THREE.RGBFormat;
 	escena.background = scCube;
         
-  
+	//Luces
+  	var ambient = new THREE.AmbientLight( 0xffffff );
+	escena.add( ambient );
+	pointLight = new THREE.PointLight( 0xffffff, 2 );
+	escena.add( pointLight );
+
 }
 
 var malla, camara, renderer, escena;
