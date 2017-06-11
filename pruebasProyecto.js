@@ -27,28 +27,13 @@ function setup(){
 	window.addEventListener( 'resize', listener, false);
   
   
-  //SkyBox (Fondo)
+        //Fondo
 	var path = 'http://fernandoglezt.github.io/';
         var sides = [ path + 'sbox_px.jpg', path + 'sbox_nx.jpg', path + 'sbox_py.jpg', path + 'sbox_ny.jpg', path + 'sbox_pz.jpg', path + 'sbox_nz.jpg' ];
-
-        // load images
-        var scCube = THREE.CubeTextureLoader(sides);
-	
+        var scCube = THREE.CubeTextureLoader().load(sides);
         scCube.format = THREE.RGBFormat;
-
-        // prepare skybox material (shader)
-        var skyShader = THREE.ShaderLib["cube"];
-        skyShader.uniforms["tCube"].value = scCube;
-        var skyMaterial = new THREE.ShaderMaterial( {
-          fragmentShader: skyShader.fragmentShader, vertexShader: skyShader.vertexShader,
-          uniforms: skyShader.uniforms, depthWrite: false, side: THREE.BackSide
-        });
-
-        // create Mesh with cube geometry and add to the scene
-        var skyBox = new THREE.Mesh(new THREE.CubeGeometry(500, 500, 500), skyMaterial);
-        skyMaterial.needsUpdate = true;
-
-        escena.add(skyBox);
+	escena.background = ssCube;
+        
   
 }
 
