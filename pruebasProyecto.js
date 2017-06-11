@@ -56,9 +56,17 @@ function setup(){
 		malla = new THREE.Mesh(forma, material);
 		escena.add( malla);
 	});*/
+	
+	//Piso
+	var floorMaterial = new THREE.MeshBasicMaterial( {color:0x444444, side:THREE.DoubleSide} );
+	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	floor.position.y = -0.5;
+	floor.rotation.x = Math.PI / 2;
+	escena.add(floor);
 
 	//Piso
-	var loader = new THREE.TextureLoader();
+/*	var loader = new THREE.TextureLoader();
 	loader.load('grass-texture.jpg', function ( texture ) {
 		var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
 		var floorMaterial = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
@@ -66,7 +74,7 @@ function setup(){
 		floor.position.y = -0.5;
 		floor.rotation.x = Math.PI / 2;
 		escena.add( floor);
-	});
+	});*/
 	
 
 }
