@@ -49,15 +49,25 @@ function setup(){
 	
 	//Malla
 
-
-	var loader = new THREE.TextureLoader();
+/*	var loader = new THREE.TextureLoader();
 	loader.load('jack.bmp', function ( texture ) {
 		var forma = new THREE.BoxGeometry(50, 50, 50);
 		var material = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
 		malla = new THREE.Mesh(forma, material);
 		escena.add( malla);
-	});
+	});*/
 
+	//Piso
+	var loader = new THREE.TextureLoader();
+	loader.load('grass-texture.jpg', function ( texture ) {
+		var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+		var floorMaterial = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.5 } );
+		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+		floor.position.y = -0.5;
+		floor.rotation.x = Math.PI / 2;
+		escena.add( floor);
+	});
+	
 
 }
 
@@ -65,8 +75,8 @@ function setup(){
  function loop(){
     requestAnimationFrame(loop);
     
-    malla.rotation.x += 0.05;
-    malla.rotation.y += 0.05;
+//    malla.rotation.x += 0.05;
+//    malla.rotation.y += 0.05;
 
     renderer.render(escena, camara);
   }
