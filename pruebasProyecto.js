@@ -4,11 +4,6 @@ setup();
 loop();
 
 
-var listener = function() {
-	camara.aspect = window.innerWidth/window.innerHeight;
-	camara.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth, window.innerHeight);
-}
 
 function setup(){
 	//Escena
@@ -30,7 +25,7 @@ function setup(){
 
 
 	//Eventos
-	window.addEventListener( 'resize', listener, false);
+	THREEx.WindowResize(renderer, camera);
   
   	//Controles
 	controls = new THREE.OrbitControls( camara, renderer.domElement );
@@ -84,10 +79,7 @@ function setup(){
 
  function loop(){
     requestAnimationFrame(loop);
-    
-//    malla.rotation.x += 0.05;
-//    malla.rotation.y += 0.05;
-
     renderer.render(escena, camara);
+    controls.update();
   }
 
