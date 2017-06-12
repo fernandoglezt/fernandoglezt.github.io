@@ -41,7 +41,7 @@ function actualiza(){
 	pos += 0.01;
 	if( pos >= 2*Math.PI)
 		pos = 0;
-	posLuna += 0.1;
+	posLuna += 0.05;
 	if( posLuna >= 2*Math.PI)
 		posLuna = 0;
 
