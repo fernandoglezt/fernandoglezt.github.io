@@ -37,22 +37,25 @@ function personaje5(x, y, z){
 	var conoMalla5 = new THREE.Mesh(conoCinco);
 	var conoMalla6 = new THREE.Mesh(conoSeis);
 
-	var personajeCinco = new THREE.Geometry();
-
-	personajeCinco.merge(esferaMalla.geometry, esferaMalla.matrix);
-	personajeCinco.merge(conoMalla1.geometry, conoMalla1.matrix);
-	personajeCinco.merge(conoMalla2.geometry, conoMalla2.matrix);
-	personajeCinco.merge(conoMalla3.geometry, conoMalla3.matrix);
-	personajeCinco.merge(conoMalla4.geometry, conoMalla4.matrix);
-	personajeCinco.merge(conoMalla5.geometry, conoMalla5.matrix);
-	personajeCinco.merge(conoMalla6.geometry, conoMalla6.matrix);
-
-
 	var loader = new THREE.TextureLoader();
 	loader.load('MilkyWay/lavatile.jpg', function ( texture ) {
+		
 		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		var personajeCinco = new THREE.Geometry();
+
+		personajeCinco.merge(esferaMalla.geometry, esferaMalla.matrix);
+		personajeCinco.merge(conoMalla1.geometry, conoMalla1.matrix);
+		personajeCinco.merge(conoMalla2.geometry, conoMalla2.matrix);
+		personajeCinco.merge(conoMalla3.geometry, conoMalla3.matrix);
+		personajeCinco.merge(conoMalla4.geometry, conoMalla4.matrix);
+		personajeCinco.merge(conoMalla5.geometry, conoMalla5.matrix);
+		personajeCinco.merge(conoMalla6.geometry, conoMalla6.matrix)
+		
 		personajeCincoM = new THREE.Mesh(personajeCinco, material);
-		personajeCinco.translate(x, y, z);
+		personajeCincoM.position.x = x;
+		personajeCincoM.position.y = y;
+		personajeCincoM.position.z = z;
+		
 		escena.add(personajeCincoM);
 	});
 	
