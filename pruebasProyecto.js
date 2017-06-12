@@ -1,6 +1,6 @@
 var malla, camara, renderer, escena, pointLight;
-var pos = 0;
-var planetaTierra;
+var pos = 0, posLuna = 0;
+var planetaTierra, luna;
 
 
 setup();
@@ -33,11 +33,17 @@ function actualiza(){
 	planetaTierra.position.x = 600*Math.cos(pos);
 	planetaTierra.position.y = 600*Math.sin(pos);
 	
+	luna.position.x = (600+120)*Math.cos(posLuna);
+	luna.position.y = (600+120)*Math.sin(posLuna);	
+	
 	planetaTierra.rotation.y += 0.01;
 	
 	pos += 0.01;
 	if( pos >= 2*Math.PI)
 		pos = 0;
+	posLuna += 0.1;
+	if( posLuna >= 2*Math.PI)
+		posLuna = 0;
 
 }
 
@@ -129,7 +135,15 @@ function setup(){
 			planetaTierra.position.y = 400;
 			escena.add(planetaTierra);
 	} );
-	
+	//luna
+	var loader = new THREE.TextureLoader();
+		loader.load( 'MilkyWay/moon-texture.jpg', function ( texture ) {
+			var lunaG = new THREE.SphereGeometry( 20, 20, 20 );
+			var lunaM = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+			luna = new THREE.Mesh( lunaG, lunaM );
+			luna.position.y = 400+120;
+			escena.add(luna);
+	} );
 }
 
 
