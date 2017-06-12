@@ -52,11 +52,11 @@ function personaje5(x, y, z){
 	loader.load('MilkyWay/lavatile.jpg', function ( texture ) {
 		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
 		personajeCincoM = new THREE.Mesh(personajeCinco, material);
+		personajeCinco.translate(x, y, z);
+		escena.add(personajeCincoM);
 	});
 	
 	
-	personajeCinco.translate(x, y, z);
-	escena.add(personajeCincoM);
 
 }
 
