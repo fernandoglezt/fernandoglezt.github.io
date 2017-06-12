@@ -48,9 +48,12 @@ function personaje5(x, y, z){
 	personajeCinco.merge(conoMalla6.geometry, conoMalla6.matrix);
 
 
-	var material = new THREE.MeshNormalMaterial();
-	personajeCincoM = new THREE.Mesh(personajeCinco, material);
-
+	var loader = new THREE.TextureLoader();
+	loader.load('MilkyWay/lavatile.jpg', function ( texture ) {
+		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		personajeCincoM = new THREE.Mesh(personajeCinco, material);
+	});
+	
 	
 	personajeCinco.translate(x, y, z);
 	escena.add(personajeCincoM);
