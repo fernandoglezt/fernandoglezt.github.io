@@ -33,8 +33,8 @@ function actualiza(){
 	planetaTierra.position.x = 600*Math.cos(pos);
 	planetaTierra.position.y = 600*Math.sin(pos);
 	
-	luna.position.x = (600+120)*Math.cos(posLuna);
-	luna.position.y = (600+120)*Math.sin(posLuna);	
+	luna.position.x = 600*Math.cos(pos)+120*Math.cos(posLuna);
+	luna.position.y = 600*Math.sin(pos)+120*Math.sin(posLuna);	
 	
 	planetaTierra.rotation.y += 0.01;
 	
