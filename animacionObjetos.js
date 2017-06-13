@@ -15,7 +15,7 @@ function windowResize() {
 }
 
 function push(e) {
-	//CAMBIOS DE C¡MARA
+	//CAMBIOS DE C√ÅMARA
 	if (e.keyCode === 90 ) //z
 		camara.position.z += 10; 
 	if (e.keyCode===88)  //x
@@ -74,7 +74,7 @@ function setup(){
   	escena = new THREE.Scene();
 	
 	
-	//C·mara
+	//C√°mara
 	var VIEW_ANGLE = 45, ASPECT = window.innerWidth / window.innerHeight, NEAR = 0.1, FAR = 20000;
 	camara = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);	
 	escena.add(camara);
@@ -134,10 +134,9 @@ function setup(){
 }
 
 
-
  function loop(){
+	requestAnimationFrame(loop);
+        renderer.render(escena, camara);
 	actualiza();
         controls.update();
-	renderer.render(escena, camara);
-	requestAnimationFrame(loop);
   }
