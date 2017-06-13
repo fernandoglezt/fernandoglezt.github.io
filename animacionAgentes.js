@@ -114,14 +114,19 @@ function setup(){
 	camara.position.set(0, 0, 30);
 	//camara.lookAt(entorno.position);
 
-	entorno.add(new Pared(1,7,0));
-	entorno.add(new Pared(1,-7,0));
-	entorno.add(new Pared(1,7,1));
-	entorno.add(new Pared(1,-7,1));
-	entorno.add(new Pared(1,7,-1));
-	entorno.add(new Pared(1,-7,-1));
+	entorno.add(new Pared(5,2*7,0));
+	entorno.add(new Pared(5,2*-7,0));
+	entorno.add(new Pared(5,2*7,2*1));
+	entorno.add(new Pared(5,2*-7,2*1));
+	entorno.add(new Pared(5,2*7,2*-1));
+	entorno.add(new Pared(5,2*-7,2*-1));
 	entorno.add(new Pelota(0.5,0,0));
 	entorno.add(new Pelota(0.5,5,0));
+
+	entorno.add(new Pelota(0.5,0,4));
+	entorno.add(new Pelota(0.5,5,4));
+	entorno.add(new Pelota(0.5,-5,4));
+
 	entorno.add(camara);
 
 	renderer = new THREE.WebGLRenderer();
