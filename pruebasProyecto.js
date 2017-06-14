@@ -261,7 +261,7 @@ function setup(){
 			escena.add(luna);
 	} );
 	
-	/Personajes
+	//Personajes
 	personaje5(0, 30, 0);
 	personaje6(-450, 30, -450);
 }
