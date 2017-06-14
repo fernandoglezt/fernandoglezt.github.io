@@ -1,7 +1,7 @@
 var malla, camara, renderer, escena, pointLight;
 var pos = 0, posLuna = 0, posPersonajeCinco = 0;
 var planetaTierra, luna;
-var personajeCincoM;
+var personajeCincoM, personajeSeisM;
 
 
 setup();
