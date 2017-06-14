@@ -7,6 +7,59 @@ var personajeCincoM;
 setup();
 loop();
 
+function personaje6(x, y, z){
+	var escala = 25;
+	
+	var cabeza = new THREE.IcosahedronGeometry(escala*0.25);
+	var cuerpo = new THREE.CylinderGeometry(escala*0.25, escala*0.25, escala*1);
+	var brazoIzq = new THREE.CylinderGeometry(escala*0.08, escala*0.08, escala*0.5);
+	var brazoDer = new THREE.CylinderGeometry(escala*0.08, escala*0.08, escala*0.5);
+	var piernaIzq = new THREE.CylinderGeometry(escala*0.09, escala*0.09, escala*0.5);
+	var piernaDer = new THREE.CylinderGeometry(escala*0.09, escala*0.09, escala*0.5);
+	
+	brazoIzq.rotateZ(5.75);
+	brazoDer.rotateZ(Math.PI/6);
+	piernaIzq.rotateZ(6.1);
+	piernaDer.rotateZ(0.17);
+	
+	cabeza.translate(escala*0, escala*0.7, escala*0);
+	piernaIzq.translate(escala*-0.2, escala*-0.75, escala*0);
+	piernaDer.translate(escala*0.2, escala*-0.75, escala*0);
+	brazoIzq.translate(escala*-0.33, escala*0, escala*0);
+	brazoDer.translate(escala*0.33, escala*0, escala*0);
+	
+	var cabezaMalla = new THREE.Mesh(cabeza);
+	var cuerpoMalla = new THREE.Mesh(cuerpo);
+	var brazoIzqMalla = new THREE.Mesh(brazoIzq);
+	var brazoDerMalla = new THREE.Mesh(brazoDer);
+	var piernaIzqMalla = new THREE.Mesh(piernaIzq);
+	var piernaDerMalla = new THREE.Mesh(piernaDer);
+	
+	
+	var loader = new THREE.TextureLoader();
+	loader.load('MilkyWay/transition3.png', function ( texture ) {
+		
+		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		var personajeSeis = new THREE.Geometry();
+
+		personajeSeis.merge(cabezaMalla.geometry, cabezaMalla.matrix);
+		personajeSeis.merge(cuerpoMalla.geometry, cuerpoMalla.matrix);
+		personajeSeis.merge(brazoIzqMalla.geometry, brazoIzqMalla.matrix);
+		personajeSeis.merge(brazoDerMalla.geometry, brazoDerMalla.matrix);
+		personajeSeis.merge(piernaIzqMalla.geometry, piernaIzqMalla.matrix);
+		personajeSeis.merge(piernaDerMalla.geometry, piernaDerMalla.matrix);
+		
+		personajeSeisM = new THREE.Mesh(personajeSeis, material);
+		personajeSeisM.position.x = x;
+		personajeSeisM.position.y = y;
+		personajeSeisM.position.z = z;
+		
+		escena.add(personajeSeisM);
+	});
+	
+
+}
+
 function personaje5(x, y, z){
 	var esferaForma = new THREE.SphereGeometry( 6*1 );
 	var conoUno = new THREE.ConeGeometry( 6*1, 6*4);
@@ -119,7 +172,7 @@ function setup(){
 	var VIEW_ANGLE = 45, ASPECT = window.innerWidth / window.innerHeight, NEAR = 0.1, FAR = 20000;
 	camara = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);	
 	escena.add(camara);
-	camara.position.set(0,500,1000);
+	camara.position.set(-1000, 750, -1000);
 	camara.lookAt(escena.position);	
 
 
@@ -208,7 +261,9 @@ function setup(){
 			escena.add(luna);
 	} );
 	
+	/Personajes
 	personaje5(0, 30, 0);
+	personaje6(-450, 30, -450);
 }
 
 
