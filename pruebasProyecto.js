@@ -1,4 +1,4 @@
-var malla, camara, renderer, escena, pointLight, pointLight2, pointLight3, pointLight4, pointLight5, pointLight6;
+var malla, camara, renderer, escena, pointLight, pointLight2, pointLight3, pointLight4, pointLight5, pointLight6, ini=0;
 var pos = 0, posLuna = 0, posPersonajeCinco = 0, posTo1=0, posTo2=0, posP3=3.5, posP2=3.5;
 var planetaTierra, luna, Torus, Torus2, personajeDosM, personajeDosM2, personajeTresM, personajeTresM2, personajeTresM3, personajeTresM4, personajeCincoM, personajeSeisM, trenM;
 var trayT = 0;
@@ -352,6 +352,13 @@ function Colisiones(){
 	if( Math.abs( personajeSeisM.position.x - Torus2.position.x ) < 30 && 
 	    Math.abs( personajeSeisM.position.z - Torus2.position.z ) < 30 )
 		personajeSeisM.position.set(-450, 30, -450);
+	
+	//Tren
+	if( Math.abs( personajeSeisM.position.x - trenM.position.x ) < 30 && 
+	    Math.abs( personajeSeisM.position.z - trenM.position.z ) < 30 ){
+		personajeSeisM.position.set(-450, 30, -450);
+		alert("Felicidades, has ganado!");
+	}
 }
 
 
@@ -478,21 +485,33 @@ function push(e) {
 		camara.position.x -= 5;
 	
 	//Posición personaje 6
-	if (e.keyCode === 65) // IZQUIERDA - A
+	if (e.keyCode === 65){ // IZQUIERDA - A
 		personajeSeisM.position.z -= 3; 
-	if (e.keyCode === 68) // DERECHA - D
+		personajeSeisM.rotation.y -= 0.05;
+	}
+	if (e.keyCode === 68){ // DERECHA - D
 		personajeSeisM.position.z += 3; 
-	if (e.keyCode === 87) // ARRIBA - W
+		personajeSeisM.rotation.y += 0.05;
+	}
+	if (e.keyCode === 87){ // ARRIBA - W
 		personajeSeisM.position.x += 3;
-	if (e.keyCode === 83) // ABAJO - S
+		personajeSeisM.rotation.y += 0.05;
+	}
+	if (e.keyCode === 83){ // ABAJO - S
 		personajeSeisM.position.x -= 3;
+		personajeSeisM.rotation.y -= 0.05;
+	}
 }
 
 function setup(){
+	if(ini===0){
+		alert("Bienvenido, usa las teclas 'a' 's' 'd' 'w' para comenzar a jugar. El objetivo es llegar al tren.");
+		ini = 1;
+	}
+	
 	//Escena
   	escena = new THREE.Scene();
-	
-	
+
 	//Cámara
 	var VIEW_ANGLE = 45, ASPECT = window.innerWidth / window.innerHeight, NEAR = 0.1, FAR = 20000;
 	camara = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);	
