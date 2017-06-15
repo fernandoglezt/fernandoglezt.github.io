@@ -1,4 +1,4 @@
-var malla, camara, renderer, escena, pointLight, pointLight2, pointLight3, pointLight4, pointLight5;
+var malla, camara, renderer, escena, pointLight, pointLight2, pointLight3, pointLight4, pointLight5, pointLight6;
 var pos = 0, posLuna = 0, posPersonajeCinco = 0, posTo1=0, posTo2=0, posP3=3.5, posP2=3.5;
 var planetaTierra, luna, Torus, Torus2, personajeDosM, personajeDosM2, personajeTresM, personajeTresM2, personajeTresM3, personajeTresM4, personajeCincoM, personajeSeisM, trenM;
 var trayT = 0;
@@ -447,6 +447,10 @@ function actualiza(){
 
 	//Rotación tren
 	trenM.rotation.y += 0.05;
+	
+	//Moviemientos luz 5
+	pointLight6.position.x = 400*Math.cos(pos);
+	pointLight6.position.z = 400*Math.sin(pos);
 
 	Colisiones();
 }
@@ -547,6 +551,9 @@ function setup(){
 	
 	pointLight5 = createLight( 0xffffff, 200 );
 	pointLight5.position.set(0, 100, 300);
+	
+	pointLight6 = createLight( 0xffffff, 200 );
+	pointLight6.position.set(0, 100, );
 	
 	escena.add( pointLight );
 	escena.add( pointLight2 );
