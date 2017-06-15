@@ -173,20 +173,27 @@ function personaje2(x, y, z, p){
 	personajeDos.merge(conoMalla.geometry, conoMalla.matrix);
 	personajeDos.merge(conoMalla2.geometry, conoMalla2.matrix);
 	
-	var material = new THREE.MeshNormalMaterial();
 	
-	if (p === 0){
-		personajeDosM = new THREE.Mesh(personajeDos, material);
-		personajeDosM.rotateY(Math.PI/2);
-		personajeDosM.position.set(x, y, z);
-		escena.add(personajeDosM);
-	}
-	if (p === 1){
-		personajeDosM2 = new THREE.Mesh(personajeDos, material);
-		personajeDosM2.rotateY(Math.PI/2);
-		personajeDosM2.position.set(x, y, z);
-		escena.add(personajeDosM2);
-	}
+	var loader = new THREE.TextureLoader();
+	loader.load('MilkyWay/iron-texture.jpg', function ( texture ) {
+		
+		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		
+		if (p === 0){
+			personajeDosM = new THREE.Mesh(personajeDos, material);
+			personajeDosM.rotateY(Math.PI/2);
+			personajeDosM.position.set(x, y, z);
+			escena.add(personajeDosM);
+		}
+		if (p === 1){
+			personajeDosM2 = new THREE.Mesh(personajeDos, material);
+			personajeDosM2.rotateY(Math.PI/2);
+			personajeDosM2.position.set(x, y, z);
+			escena.add(personajeDosM2);
+		}
+		
+	});
+	
 }
 
 function personajeTren(x, y, z, p){
