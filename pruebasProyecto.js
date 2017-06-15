@@ -123,28 +123,36 @@ function personaje3(x, y, z, p){
 	}
 
 	var personajeTres = new THREE.LatheGeometry(puntos);
-	var material = new THREE.MeshNormalMaterial();
 	
-	if (p===0){
-		personajeTresM = new THREE.Mesh( personajeTres, material );
-		personajeTresM.position.set(x, y, z);
-		escena.add(personajeTresM);
-	}
-	if (p===1){
-		personajeTresM2 = new THREE.Mesh( personajeTres, material );
-		personajeTresM2.position.set(x, y, z);
-		escena.add(personajeTresM2);
-	}
-	if (p===2){
-		personajeTresM3 = new THREE.Mesh( personajeTres, material );
-		personajeTresM3.position.set(x, y, z);
-		escena.add(personajeTresM3);
-	}
-	if (p===3){
-		personajeTresM4 = new THREE.Mesh( personajeTres, material );
-		personajeTresM4.position.set(x, y, z);
-		escena.add(personajeTresM4);
-	}
+	var loader = new THREE.TextureLoader();
+	loader.load('MilkyWay/light-texture.jpg', function ( texture ) {
+		
+		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		
+		if (p===0){
+			personajeTresM = new THREE.Mesh( personajeTres, material );
+			personajeTresM.position.set(x, y, z);
+			escena.add(personajeTresM);
+		}
+		if (p===1){
+			personajeTresM2 = new THREE.Mesh( personajeTres, material );
+			personajeTresM2.position.set(x, y, z);
+			escena.add(personajeTresM2);
+		}
+		if (p===2){
+			personajeTresM3 = new THREE.Mesh( personajeTres, material );
+			personajeTresM3.position.set(x, y, z);
+			escena.add(personajeTresM3);
+		}
+		if (p===3){
+			personajeTresM4 = new THREE.Mesh( personajeTres, material );
+			personajeTresM4.position.set(x, y, z);
+			escena.add(personajeTresM4);
+		}
+		
+	});
+	
+	
 }
 
 function personaje2(x, y, z, p){
