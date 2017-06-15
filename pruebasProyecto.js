@@ -261,17 +261,23 @@ function personajeTren(x, y, z, p){
         trenForma.merge(cilindroMalla4.geometry, cilindroMalla4.matrix);
         trenForma.rotateY(3 * Math.PI / 4);
         trenForma.translate(0, -20, 0)
-        //trenForma.rotateZ(Math.PI/4);
 
-        var material = new THREE.MeshNormalMaterial();
-        trenM = new THREE.Mesh(trenForma, material);
 	
-	trenM.position.x = x;
-	trenM.position.y = y;
-	trenM.position.z = z;
-	trenM.rotation.y = Math.PI/4;
+	var loader = new THREE.TextureLoader();
+	loader.load('MilkyWay/iron-texture', function ( texture ) {
+		
+		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
+		
+		trenM = new THREE.Mesh(trenForma, material);
+		trenM.position.x = x;
+		trenM.position.y = y;
+		trenM.position.z = z;
+		trenM.rotation.y = Math.PI/4;
 
-	escena.add(trenM);
+		escena.add(trenM);
+	});
+	
+	
 }
 
 
@@ -406,6 +412,16 @@ function push(e) {
 		camara.position.x += 5;
 	if (e.keyCode===78) //n
 		camara.position.x -= 5;
+	
+	//Posición personaje 6
+	if (e.keyCode === 65) // IZQUIERDA - A
+		personajeSeisM.position.z -= 3; 
+	if (e.keyCode === 68) // DERECHA - D
+		personajeSeisM.position.z += 3; 
+	if (e.keyCode === 87) // ARRIBA - W
+		personajeSeisM.position.x += 3;
+	if (e.keyCode === 83) // ABAJO - S
+		personajeSeisM.position.x -= 3;
 }
 
 function setup(){
