@@ -560,6 +560,7 @@ function setup(){
 	escena.add( pointLight3 );
 	escena.add( pointLight4 );
 	escena.add( pointLight5 );
+	escena.add( pointLight6 );
 	
 	//Piso
 	var loader = new THREE.TextureLoader();
