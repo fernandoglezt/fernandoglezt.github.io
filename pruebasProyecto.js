@@ -1,4 +1,4 @@
-var malla, camara, renderer, escena, pointLight;
+var malla, camara, renderer, escena, pointLight, pointLight2, pointLight3, pointLight4, pointLight5;
 var pos = 0, posLuna = 0, posPersonajeCinco = 0, posTo1=0, posTo2=0, posP3=3.5, posP2=3.5;
 var planetaTierra, luna, Torus, Torus2, personajeDosM, personajeDosM2, personajeTresM, personajeTresM2, personajeTresM3, personajeTresM4, personajeCincoM, personajeSeisM, trenM;
 var trayT = 0;
@@ -50,6 +50,7 @@ function personaje6(x, y, z){
 		personajeSeis.merge(piernaDerMalla.geometry, piernaDerMalla.matrix);
 		
 		personajeSeisM = new THREE.Mesh(personajeSeis, material);
+		personajeSeisM.castShadow = true;
 		personajeSeisM.position.x = x;
 		personajeSeisM.position.y = y;
 		personajeSeisM.position.z = z;
@@ -105,6 +106,7 @@ function personaje5(x, y, z){
 		personajeCinco.merge(conoMalla6.geometry, conoMalla6.matrix)
 		
 		personajeCincoM = new THREE.Mesh(personajeCinco, material);
+		personajeCincoM.castShadow = true;
 		personajeCincoM.position.x = x;
 		personajeCincoM.position.y = y;
 		personajeCincoM.position.z = z;
@@ -131,21 +133,25 @@ function personaje3(x, y, z, p){
 		
 		if (p===0){
 			personajeTresM = new THREE.Mesh( personajeTres, material );
+			personajeTresM.castShadow = true;
 			personajeTresM.position.set(x, y, z);
 			escena.add(personajeTresM);
 		}
 		if (p===1){
 			personajeTresM2 = new THREE.Mesh( personajeTres, material );
+			personajeTresM2.castShadow = true;
 			personajeTresM2.position.set(x, y, z);
 			escena.add(personajeTresM2);
 		}
 		if (p===2){
 			personajeTresM3 = new THREE.Mesh( personajeTres, material );
+			personajeTresM3.castShadow = true;
 			personajeTresM3.position.set(x, y, z);
 			escena.add(personajeTresM3);
 		}
 		if (p===3){
 			personajeTresM4 = new THREE.Mesh( personajeTres, material );
+			personajeTresM4.castShadow = true;
 			personajeTresM4.position.set(x, y, z);
 			escena.add(personajeTresM4);
 		}
@@ -189,12 +195,14 @@ function personaje2(x, y, z, p){
 		
 		if (p === 0){
 			personajeDosM = new THREE.Mesh(personajeDos, material);
+			personajeDosM.castShadow = true;
 			personajeDosM.rotateY(Math.PI/2);
 			personajeDosM.position.set(x, y, z);
 			escena.add(personajeDosM);
 		}
 		if (p === 1){
 			personajeDosM2 = new THREE.Mesh(personajeDos, material);
+			personajeDosM2.castShadow = true;
 			personajeDosM2.rotateY(Math.PI/2);
 			personajeDosM2.position.set(x, y, z);
 			escena.add(personajeDosM2);
@@ -284,6 +292,7 @@ function personajeTren(x, y, z, p){
 		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
 		
 		trenM = new THREE.Mesh(trenForma, material);
+		trenM.castShadow = true;
 		trenM.position.x = x;
 		trenM.position.y = y;
 		trenM.position.z = z;
@@ -491,6 +500,8 @@ function setup(){
 	//Renderizador
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.shadowMap.enabled = true;
+	renderer.shadowMap.type = THREE.BasicShadowMap;
 	document.body.appendChild( renderer.domElement );
 
 
@@ -510,35 +521,34 @@ function setup(){
 	escena.background = scCube;
         
 	//Luces
-  	var ambient = new THREE.AmbientLight( 0xffffff );
-	escena.add( ambient );
+	escena.add( new THREE.AmbientLight( 0xffffff ) );
 	
-	/*pointLight = new THREE.PointLight( 0xffffff, 2 );
-	escena.add( pointLight );	
-	var spotlight = new THREE.SpotLight(0xffffff);
-	spotlight.position.set(0, 500, 0);
-	spotlight.castShadow = true;
-	spotlight.intensity = 3;
+	function createLight( color, distancia ) {
+		var pointLightAux = new THREE.PointLight( color, 2, distancia );
+		pointLight.castShadow = true;
+		pointLight.shadow.camera.near = 1;
+		pointLight.shadow.camera.far = 200;
+		pointLight.shadow.bias = 0.01;
+		
+		return pointLightAux
+	}
 	
-	var spotlight2 = new THREE.SpotLight(0xffffff);
-	spotlight2.position.set(0, -500, 0);
-	spotlight2.castShadow = true;
-	spotlight2.intensity = 3;
+	pointLight = createLight( 0xffffff, 150 );
+	pointLight.position.set(0, 100, 0);
 	
-	var spotlight3 = new THREE.SpotLight(0xffffff);
-	spotlight3.position.set(500, 0, 0);
-	spotlight3.castShadow = true;
-	spotlight3.intensity = 3;
-
-	var spotlight4 = new THREE.SpotLight(0xffffff);
-	spotlight4.position.set(-500, 0, 0);
-	spotlight4.castShadow = true;
-	spotlight4.intensity = 3;
+	pointLight2 = createLight( 0xffffff, 150 );
+	pointLight2.position.set(-250, 100, 0);
 	
-	escena.add(spotlight);
-	escena.add(spotlight2);
-	escena.add(spotlight3);
-	escena.add(spotlight4);*/
+	pointLight3 = createLight( 0xffffff, 150 );
+	pointLight3.position.set(250, 100, 0);
+	
+	pointLight4 = createLight( 0xffffff, 150 );
+	pointLight4.position.set(0, 100, -250);
+	
+	pointLight5 = createLight( 0xffffff, 150 );
+	pointLight5.position.set(0, 100, 250);
+	
+	escena.add( pointLight );
 	
 	//Piso
 	var loader = new THREE.TextureLoader();
@@ -546,6 +556,7 @@ function setup(){
 		var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
 		var floorMaterial = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
 		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+		floor.receiveShadow = true;
 		floor.position.y = -0.5;
 		floor.rotation.x = Math.PI / 2;
 		escena.add( floor);
