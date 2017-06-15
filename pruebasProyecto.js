@@ -445,7 +445,8 @@ function setup(){
 	//Luces
   	var ambient = new THREE.AmbientLight( 0xffffff );
 	escena.add( ambient );
-	pointLight = new THREE.PointLight( 0xffffff, 2 );
+	
+	/*pointLight = new THREE.PointLight( 0xffffff, 2 );
 	escena.add( pointLight );	
 	var spotlight = new THREE.SpotLight(0xffffff);
 	spotlight.position.set(0, 500, 0);
@@ -470,7 +471,7 @@ function setup(){
 	escena.add(spotlight);
 	escena.add(spotlight2);
 	escena.add(spotlight3);
-	escena.add(spotlight4);
+	escena.add(spotlight4);*/
 	
 	//Piso
 	var loader = new THREE.TextureLoader();
