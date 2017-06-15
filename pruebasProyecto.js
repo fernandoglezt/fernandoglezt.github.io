@@ -175,7 +175,7 @@ function personaje2(x, y, z, p){
 	
 	
 	var loader = new THREE.TextureLoader();
-	loader.load('MilkyWay/iron-texture.jpg', function ( texture ) {
+	loader.load('MilkyWay/hi-texture.jpg', function ( texture ) {
 		
 		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
 		
