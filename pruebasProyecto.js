@@ -536,19 +536,23 @@ function setup(){
 	pointLight = createLight( 0xffffff, 150 );
 	pointLight.position.set(0, 100, 0);
 	
-	pointLight2 = createLight( 0xffffff, 150 );
-	pointLight2.position.set(-250, 100, 0);
+	pointLight2 = createLight( 0xffffff, 200 );
+	pointLight2.position.set(-300, 100, 0);
 	
-	pointLight3 = createLight( 0xffffff, 150 );
-	pointLight3.position.set(250, 100, 0);
+	pointLight3 = createLight( 0xffffff, 200 );
+	pointLight3.position.set(300, 100, 0);
 	
-	pointLight4 = createLight( 0xffffff, 150 );
-	pointLight4.position.set(0, 100, -250);
+	pointLight4 = createLight( 0xffffff, 200 );
+	pointLight4.position.set(0, 100, -300);
 	
-	pointLight5 = createLight( 0xffffff, 150 );
-	pointLight5.position.set(0, 100, 250);
+	pointLight5 = createLight( 0xffffff, 200 );
+	pointLight5.position.set(0, 100, 300);
 	
 	escena.add( pointLight );
+	escena.add( pointLight2 );
+	escena.add( pointLight3 );
+	escena.add( pointLight4 );
+	escena.add( pointLight5 );
 	
 	//Piso
 	var loader = new THREE.TextureLoader();
@@ -612,12 +616,14 @@ function setup(){
 	//Personaje Torus
 	var material = new THREE.MeshLambertMaterial( {color: 0xabcdef} );
 	Torus = new THREE.Mesh( new THREE.TorusGeometry( 20, 5, 20, 20 ), material );
+	Torus.castShadow = true;
 	Torus.rotation.x = Math.PI/2;
 	Torus.position.set( -170, 30, -0 );	
 	escena.add( Torus );
 
 	var material = new THREE.MeshLambertMaterial( {color: 0xff0000} );
 	Torus2 = new THREE.Mesh( new THREE.TorusGeometry( 20, 5, 20, 20 ), material );
+	Torus2.castShadow = true;
 	Torus2.rotation.x = Math.PI/2;
 	Torus2.position.set( 170, 30, -0 );	
 	escena.add( Torus2 );
@@ -637,10 +643,7 @@ function setup(){
 
 	personajeTren(0, 35, 0, 0);
 
-	//Activar luz y sombras
-	renderer.shadowMap.Enabled = true;
-//	planetaTierra.castShadow = true;
-//	floor.receiveShadow = true;
+
 }
 
 
