@@ -37,7 +37,7 @@ function personaje6(x, y, z){
 	
 	
 	var loader = new THREE.TextureLoader();
-	loader.load('MilkyWay/transition3.png', function ( texture ) {
+	loader.load('MilkyWay/circuit-texture.jpg', function ( texture ) {
 		
 		var material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide } );
 		var personajeSeis = new THREE.Geometry();
@@ -293,7 +293,43 @@ function Colisiones(){
 	if( Math.round(personajeSeisM.position.z) >= 489 )
 		personajeSeisM.position.z = 486;
 	 
+	//Personaje2
+	//console.log( Math.abs( personajeSeisM.position.z - personajeDosM2.position.z ) );
+	if( Math.abs( personajeSeisM.position.x - personajeDosM.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeDosM.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	if( Math.abs( personajeSeisM.position.x - personajeDosM2.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeDosM2.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	
+	//Personaje3
+	if( Math.abs( personajeSeisM.position.x - personajeTresM.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeTresM.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	if( Math.abs( personajeSeisM.position.x - personajeTresM2.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeTresM2.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	if( Math.abs( personajeSeisM.position.x - personajeTresM3.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeTresM3.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	if( Math.abs( personajeSeisM.position.x - personajeTresM4.position.x ) < 6 && 
+	    Math.abs( personajeSeisM.position.z - personajeTresM4.position.z ) < 6 )
+		personajeSeisM.position.set(-450, 30, -450);
+	
+	////Personaje5
+	if( Math.abs( personajeSeisM.position.x - personajeCincoM.position.x ) < 20 && 
+	    Math.abs( personajeSeisM.position.z - personajeCincoM.position.z ) < 20 )
+		personajeSeisM.position.set(-450, 30, -450);
+	
+	//Torus
+	if( Math.abs( personajeSeisM.position.x - Torus.position.x ) < 30 && 
+	    Math.abs( personajeSeisM.position.z - Torus.position.z ) < 30 )
+		personajeSeisM.position.set(-450, 30, -450);
+	if( Math.abs( personajeSeisM.position.x - Torus2.position.x ) < 30 && 
+	    Math.abs( personajeSeisM.position.z - Torus2.position.z ) < 30 )
+		personajeSeisM.position.set(-450, 30, -450);
 }
+
 
 
 function actualiza(){
