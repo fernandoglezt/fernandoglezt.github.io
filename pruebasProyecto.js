@@ -480,6 +480,7 @@ function setup(){
 		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 		floor.position.y = -0.5;
 		floor.rotation.x = Math.PI / 2;
+		floor.receiveShadow = true;
 		escena.add( floor);
 	});
 	
@@ -530,7 +531,7 @@ function setup(){
 			escena.add(luna);
 	} );
 	
-		//Personaje Torus
+	//Personaje Torus
 	var material = new THREE.MeshLambertMaterial( {color: 0xabcdef} );
 	Torus = new THREE.Mesh( new THREE.TorusGeometry( 20, 5, 20, 20 ), material );
 	Torus.rotation.x = Math.PI/2;
@@ -560,7 +561,7 @@ function setup(){
 
 	//Activar luz y sombras
 	renderer.shadowMap.Enabled = true;
-	planetaTierra.castShadow = true;
+//	planetaTierra.castShadow = true;
 	floor.receiveShadow = true;
 }
 
