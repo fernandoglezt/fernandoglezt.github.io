@@ -480,7 +480,6 @@ function setup(){
 		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 		floor.position.y = -0.5;
 		floor.rotation.x = Math.PI / 2;
-		floor.receiveShadow = true;
 		escena.add( floor);
 	});
 	
@@ -562,7 +561,7 @@ function setup(){
 	//Activar luz y sombras
 	renderer.shadowMap.Enabled = true;
 //	planetaTierra.castShadow = true;
-	floor.receiveShadow = true;
+//	floor.receiveShadow = true;
 }
 
 
